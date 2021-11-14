@@ -38,7 +38,7 @@ for (i in 3:dim(alldata2)[1]) {
 my_priors <- normal(location = [0, 0], scale = [2.5, 2.5])
 
 # normal model
-w_eggs_Cmod <- stan_glm(Avg.RASY.Count ~ wEggst2 + (1|Pond.ID),
+w_eggs_Cmod <- stan_glm(Avg.RASY.Count ~ wEggst2 + (wEggst2|Pond.ID),
                        iter = 10000,
                        na.action = "na.omit",
                        data = alldata2,
@@ -128,7 +128,7 @@ Dens_Counts <- alldata2 %>%
   theme(legend.position = "none")
 
 # depth model
-depth_Cmod <- stan_glmer(Avg.RASY.Count ~ Depth + (1|Pond.ID),
+depth_Cmod <- stan_glmer(Avg.RASY.Count ~ Depth + (Depth|Pond.ID),
                       iter = 10000,
                       na.action = "na.omit",
                       data = alldata2,
@@ -156,7 +156,7 @@ Depth_Counts <- alldata2 %>%
 
 
 # canopy model
-canopy_Cmod <- stan_glmer(Avg.RASY.Count ~ canopy + (1|Pond.ID),
+canopy_Cmod <- stan_glmer(Avg.RASY.Count ~ canopy + (canopy|Pond.ID),
                        iter = 10000,
                        na.action = "na.omit",
                        data = alldata2,
@@ -183,7 +183,7 @@ Canopy_Counts <- alldata2 %>%
   theme(legend.position = "none")
 
 # winter thaw model
-winter_Cmod <- stan_glmer(Avg.RASY.Count ~ days_thawed.y + (1|Pond.ID),
+winter_Cmod <- stan_glmer(Avg.RASY.Count ~ days_thawed.y + (days_thawed.y|Pond.ID),
                         iter = 10000,
                         na.action = "na.omit",
                         data = alldata2,
@@ -210,7 +210,7 @@ Thaw_Counts <- alldata2 %>%
   theme(legend.position = "none")
 
 # PDSI model
-PDSI_Cmod <- stan_glmer(Avg.RASY.Count ~ spfaPDSI + (1|Pond.ID),
+PDSI_Cmod <- stan_glmer(Avg.RASY.Count ~ spfaPDSI + (spfaPDSI|Pond.ID),
                         iter = 10000,
                         na.action = "na.omit",
                         data = alldata2,
@@ -237,7 +237,7 @@ PDSI_Counts <- alldata2 %>%
   theme(legend.position = "none")
 
 # PDSI lag model
-PDSIlag_Cmod <- stan_glmer(Avg.RASY.Count ~ spfaPDSIlag + (1|Pond.ID),
+PDSIlag_Cmod <- stan_glmer(Avg.RASY.Count ~ spfaPDSIlag + (spfaPDSIlag|Pond.ID),
                       iter = 10000,
                       na.action = "na.omit",
                       data = alldata2,
@@ -331,7 +331,7 @@ for (i in 3:dim(alldata2)[1]) {
 }
 
 # model
-w_eggs_Gmod <- stan_glmer(growthrate2 ~ wEggst2 + (1|Pond.ID),
+w_eggs_Gmod <- stan_glmer(growthrate2 ~ wEggst2 + (wEggst2|Pond.ID),
                         iter = 10000,
                         na.action = "na.omit",
                         data = alldata2,
@@ -361,7 +361,7 @@ wEggs_Growth <- alldata2 %>%
   theme(legend.position = "none")
 
 # density(t-2) model
-dens_Gmod <- stan_glmer(growthrate2 ~ RASYdens_t2 + (1|Pond.ID),
+dens_Gmod <- stan_glmer(growthrate2 ~ RASYdens_t2 + (RASYdens_t2|Pond.ID),
                       iter = 10000,
                       na.action = "na.omit",
                       data = alldata2,
@@ -388,7 +388,7 @@ Dens_Growth <- alldata2 %>%
   theme(legend.position = "none")
 
 # depth model
-depth_Gmod <- stan_glmer(growthrate2 ~ Depth + (1|Pond.ID),
+depth_Gmod <- stan_glmer(growthrate2 ~ Depth + (Depth|Pond.ID),
                        iter = 10000,
                        na.action = "na.omit",
                        data = alldata2,
@@ -416,7 +416,7 @@ Depth_Growth <- alldata2 %>%
 
 
 # canopy model
-canopy_Gmod <- stan_glmer(growthrate2 ~ canopy + (1|Pond.ID),
+canopy_Gmod <- stan_glmer(growthrate2 ~ canopy + (canopy|Pond.ID),
                         iter = 10000,
                         na.action = "na.omit",
                         data = alldata2,
@@ -443,7 +443,7 @@ Canopy_Growth <- alldata2 %>%
   theme(legend.position = "none")
 
 # winter thaw model
-winter_Gmod <- stan_glmer(growthrate2 ~ days_thawed.y + (1|Pond.ID),
+winter_Gmod <- stan_glmer(growthrate2 ~ days_thawed.y + (days_thawed.y|Pond.ID),
                         iter = 10000,
                         na.action = "na.omit",
                         data = alldata2,
@@ -470,7 +470,7 @@ Thaw_Growth <- alldata2 %>%
   theme(legend.position = "none")
 
 # PDSI model
-PDSI_Gmod <- stan_glmer(growthrate2 ~ spfaPDSI + (1|Pond.ID),
+PDSI_Gmod <- stan_glmer(growthrate2 ~ spfaPDSI + (spfaPDSI|Pond.ID),
                       iter = 10000,
                       na.action = "na.omit",
                       data = alldata2,
@@ -497,7 +497,7 @@ PDSI_Growth <- alldata2 %>%
   theme(legend.position = "none")
 
 # PDSI lag model
-PDSIlag_Gmod <- stan_glmer(growthrate2 ~ spfaPDSIlag + (1|Pond.ID),
+PDSIlag_Gmod <- stan_glmer(growthrate2 ~ spfaPDSIlag + (spfaPDSIlag|Pond.ID),
                          iter = 10000,
                          na.action = "na.omit",
                          data = alldata2,
