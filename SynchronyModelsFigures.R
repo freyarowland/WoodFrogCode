@@ -12,6 +12,7 @@ library(ggrepel)
 library(grid)
 library(gridExtra)
 library(ggpubr)
+library(lmap)
 
 # get distance matrix between ponds ----
 ponds2$name <- ponds2$Pond.ID
