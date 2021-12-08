@@ -13,3 +13,10 @@
 - David K. Skelly
 
 ## Code
+
+There are four scripts associated with this manuscript:
+
+1) NeighborhoodCompCode.R shows how we computed the weighted effect of competition from neighboring ponds.
+2) RegressionModelsFigures.R shows the Bayesian hierarchical code using rstanarm to allow slope and intercept to vary by pond.
+3) SynchronyModelsFigures.R shows the calculations for spatial synchrony within years and across years.
+4) YMFmap.R is the code for making the map figure.
