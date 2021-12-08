@@ -1,6 +1,6 @@
-#### Code from manuscript ID Manuscript ID ECY21-0446
+# Code from manuscript "ASYNCHRONY, DENSITY DEPENDENCE, AND PERSISTENCE IN AN AMPHIBIAN" (Manuscript ID ECY21-0446)
 
-### Authors
+## Authors
 - Freya E. Rowland
 - Elizabeth Schyling
 - L. Kealoha Freidenburg
