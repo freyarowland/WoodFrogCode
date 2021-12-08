@@ -20,3 +20,7 @@ There are four scripts associated with this manuscript:
 2) RegressionModelsFigures.R shows the Bayesian hierarchical code using rstanarm to allow slope and intercept to vary by pond.
 3) SynchronyModelsFigures.R shows the calculations for spatial synchrony within years and across years.
 4) YMFmap.R is the code for making the map figure.
+
+## Data
+
+The data will be published on Dryad (link posted here) once the manuscript has a DOI to link.
