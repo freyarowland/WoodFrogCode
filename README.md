@@ -14,7 +14,7 @@
 
 ## Code
 
-There are four scripts associated with this manuscript:
+There are four scripts associated with this manuscript all linked to [WoodFrogCode.Rproj](code/WoodFrogCode.Rproj):
 
 1) [NeighborhoodCompCode.R](<code/NeighborhoodCompCode.R>) shows how we computed the weighted effect of competition from neighboring ponds.
 2) [RegressionModelsFigures.R](<code/RegressionModelsFigures.R>) shows the Bayesian hierarchical code using rstanarm to allow slope and intercept to vary by pond.
