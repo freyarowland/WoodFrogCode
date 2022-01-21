@@ -1,7 +1,8 @@
-# Code from manuscript "ASYNCHRONY, DENSITY DEPENDENCE, AND PERSISTENCE IN AN AMPHIBIAN" (Manuscript ID ECY21-0446)
+# Code from manuscript "Asychrony, density dependence, and persistence in an amphibian" (Manuscript ID ECY21-0446)
+## Published in Ecology 2022
 
 ## Authors
-- Freya E. Rowland
+- Freya E. Rowland(<sup>1</sup>)
 - Elizabeth Schyling
 - L. Kealoha Freidenburg
 - Mark C. Urban
