@@ -32,4 +32,4 @@ There are four scripts associated with this manuscript all linked to [WoodFrogCo
 
 ## Data
 
-The data will be published on Dryad (link forthcoming) once the manuscript has a DOI to link.
+The data are published on Dryad (*link forthcoming*) once the manuscript has a DOI to link. Note: no pond coordinates are included in the released data to keep populations safe from intrusion. 
