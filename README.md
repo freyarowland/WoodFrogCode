@@ -2,16 +2,22 @@
 ## Published in Ecology 2022
 
 ## Authors
-- Freya E. Rowland(<sup>1</sup>)
-- Elizabeth Schyling
-- L. Kealoha Freidenburg
-- Mark C. Urban
-- Jonathan L Richardson
-- A.Z. Andis Arietta
-- Susan B. Rodrigues
-- Adriana D. Rubinstein
-- Michael F. Benard
-- David K. Skelly
+- Freya E. Rowland<sup>1,6</sup>
+- Elizabeth Schyling<sup>1</sup>
+- L. Kealoha Freidenburg<sup>1</sup>
+- Mark C. Urban<sup>2</sup>
+- Jonathan L Richardson<sup>3</sup>
+- A.Z. Andis Arietta<sup>1</sup>
+- Susan B. Rodrigues<sup>1</sup>
+- Adriana D. Rubinstein<sup>1</sup>
+- Michael F. Benard<sup>4</sup>
+- David K. Skelly<sup>1,5</sup>
+
+<sup>1</sup>School of the Environment, Yale University, 370 Prospect St., New Haven, CT 06511 USA
+<sup>2</sup>Department of Ecology and Evolutionary Biology and Center of Biological Risk, University of Connecticut, Storrs, CT 06269 USA
+<sup>3</sup>Department of Biology, University of Richmond, VA 23173 USA
+
+
 
 ## Code
 
