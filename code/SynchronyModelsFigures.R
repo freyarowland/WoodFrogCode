@@ -1,6 +1,6 @@
 # Code to compute spatial and temporal synchrony
 # written by F.E. Rowland
-# January 2021
+# Last edit January 2022
 
 # libraries
 library(ncf)
@@ -8,7 +8,6 @@ library(ape)
 library(cowplot)
 library(reshape2)
 library(viridis)
-library(ggrepel)
 library(grid)
 library(gridExtra)
 library(ggpubr)
@@ -16,7 +15,6 @@ library(lmap)
 
 # get distance matrix between ponds ----
 ponds2$name <- ponds2$Pond.ID
-#coords <- ponds[c(1:16, 18:23, 25:32, 34:50, 52, 56:58, 60:62, 64:66, 69:71), c(5:7)] # take out the ponds with no data
 coords <- ponds2[ , c(1, 5:6)] # subset Pond.ID, lat, lon
 
 ReplaceLowerOrUpperTriangle <- function(m, triangle.to.replace){
@@ -80,31 +78,14 @@ diag(inv.dist) <- 0
 
 # data
 countmat <- read.csv("wide_eggs.csv", header = TRUE)
-countmat_med <- read.csv("wide_eggs_med.csv", header = TRUE)
 coords <- read.csv("pond_coordinates3.csv", header = TRUE)
 coords2 <- subset(coords, eliminate == 0)
 x <- coords2$lat
 y <- coords2$lon
 z <- countmat[,-1]
-z.med <- countmat_med[,-1]
 
 
-# Spatial correlogram
-fit1 <- correlog.nc(x, y, z, w = NULL, increment = 0.5, resamp = 5000,
-                    na.rm = TRUE, latlon = TRUE, quiet = FALSE)
-summary(fit1)
-plot(fit1)
-
-# with median distance only
-fit1 <- correlog.nc(x, y, z.med, w = NULL, increment = 0.5, resamp = 5000,
-                    na.rm = TRUE, latlon = TRUE, quiet = FALSE)
-summary(fit1)
-plot(fit1)
-
-# noncentered (Mantel) correlogram shows 2016 as outlier
-fit1 <- correlog.nc(x = x, y = y, z = z, increment = 0.5, na.rm = TRUE, resamp = 1000)  ## Not run: plot(fit1)
-
-# plot spline correlelogram USE ----
+# spline correlelogram ----
 fit2 <- spline.correlog(x = x, y = y, z = z, latlon = TRUE,
                         resamp = 5000, na.rm = TRUE)
 plot(fit2, text = TRUE)
@@ -248,113 +229,20 @@ autocorr_figure <- ggarrange(Moran_plot, correlog.plot,
                              ncol = 1, nrow = 2,
                              align = "hv",
                              width = 400, height = 600) %>%
-  ggexport(filename = "autocorr_figure.jpeg")
+  ggexport(filename = "autocorr_figure.pdf", dpi = 600)
 autocorr_figure
 
 # combine Moran plot and correlog plot
-grid.arrange(Moran_plot, correlog.plot, ncol = 1)
+fig2 <- ggarrange(labels = c("a", "b"),
+                           align = "hv",
+                           Moran_plot,
+                           correlog.plot,
+                           ncol = 1
+                           )
 
-# calculate Moran's I by *egg mass density* per year ----
-
-eggs3$dens <- (eggs3$Avg.RASY.Count/eggs3$Area)
-eggs_red <- eggs3[,c(1,3,5,8,13)]
-
-# make long format for density
-egg_wide2 <- dcast(eggs_red, Pond.ID ~ Year, value.var=c("dens"), mean, na.rm = TRUE)
-
-egg_wide2[egg_wide2 =="NaN"] <- "NA"
-egg_wide3 <- egg_wide2 %>% mutate_if(is.character,as.numeric)
-
-Moran2000 <- Moran.I(egg_wide3$"2000", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2001 <- Moran.I(egg_wide3$"2001", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2002 <- Moran.I(egg_wide3$"2002", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2003 <- Moran.I(egg_wide3$"2003", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2004 <- Moran.I(egg_wide3$"2004", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2005 <- Moran.I(egg_wide3$"2005", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2006 <- Moran.I(egg_wide3$"2006", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2007 <- Moran.I(egg_wide3$"2007", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2008 <- Moran.I(egg_wide3$"2008", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2009 <- Moran.I(egg_wide3$"2009", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2010 <- Moran.I(egg_wide3$"2010", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2011 <- Moran.I(egg_wide3$"2011", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2012 <- Moran.I(egg_wide3$"2012", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2013 <- Moran.I(egg_wide3$"2013", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2014 <- Moran.I(egg_wide3$"2014", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2015 <- Moran.I(egg_wide3$"2015", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2016 <- Moran.I(egg_wide3$"2016", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2017 <- Moran.I(egg_wide3$"2017", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2018 <- Moran.I(egg_wide3$"2018", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2019 <- Moran.I(egg_wide3$"2019", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-Moran2020 <- Moran.I(egg_wide3$"2020", pond.dist.inv, scaled = TRUE, na.rm = TRUE)
-
-# manually entered data from above because... Luddite
-Moran_sum <- read.csv("Moran_I.csv", header = TRUE)
-
-round_function <- function(x, digits) {
-  # round all numeric variables
-  # x: data frame
-  # digits: number of digits to round
-  numeric_columns <- sapply(x, mode) == 'numeric'
-  x[numeric_columns] <-  round(x[numeric_columns], digits)
-  x
-}
-
-Moran_round <- round_function(Moran_sum, 3)
-
-# create plot of Moran's I density over time ----
-dev.off()
-MoranDens_plot <- ggplot(aes(x = Year, y = dens_Moran.obs, group = dens_p.value, label = dens_p.value), data = Moran_sum) +
-  geom_point(aes(x = Year, y = dens_Moran.obs, fill = dens_p.value), pch = 21, size = 4) +
-  ylab("Egg Density Moran's I") +
-  scale_fill_viridis_c(breaks = seq(0, 1, 0.2),
-                       option = "magma",
-                       direction = -1,
-                       limits = c(0, 1)) +
-  theme_bw(base_size = 16) +
-  ylim(-0.11, 0.11) +
-  geom_label_repel(
-    data = subset(Moran_sum, dens_p.value <= 0.10),
-    segment.color = "grey50",
-    segment.size = 0.2,
-    box.padding = 1,
-    direction = "y") +
-  labs(fill = "P-value")
-
-Moran_plot <- ggplot(aes(x = Year, y = Moran.obs, group = p.value, label = p.value), data = Moran_sum) +
-  geom_point(aes(x = Year, y = Moran.obs, fill = p.value), pch = 21, size = 4) +
-  ylab("Moran's I") +
-  ylim(-0.11, 0.11) +
-  scale_fill_viridis_c(breaks = seq(0, 1, 0.2),
-                       option = "magma",
-                       direction = -1,
-                       limits = c(0, 1)) +
-  theme_bw(base_size = 16) +
-  xlab(NULL) +
-  geom_label_repel(
-    data = subset(Moran_round, p.value <= 0.10),
-    segment.color = "grey50",
-    segment.size = 0.2,
-    box.padding = 1,
-    direction = "y") +
-  labs(fill = "P-value")
-
-
-columngrid <- plot_grid(
-  Moran_plot + theme(legend.position = "none"),
-  MoranDens_plot + theme(legend.position = "none"),
-  labels = c('A', 'B'),
-  ncol = 2,
-  align="hv"
-)
-
-legend <- get_legend(
-  # create some space to the left of the legend
-  Moran_plot + theme(legend.box.margin = margin(0, 0, 0, 12))
-)
-
-# add the legend to the row we made earlier. Give it one-third of
-# the width of one plot (via rel_widths).
-plot_grid(columngrid, legend, rel_widths = c(2, .4))
-
-
-
+ggsave(fig2,
+       filename = "Fig2_v2.pdf",
+       device = "pdf",
+       width = 4,
+       height = 6,
+       dpi = 600)

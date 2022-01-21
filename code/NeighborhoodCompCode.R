@@ -2,7 +2,7 @@
 # on egg mass counts of ponds within 500 meters
 
 # Code by F.E. Rowland
-# Fall 2019
+# Last edit January 2022
 
 # three steps
 # 1) make all ponds > 500 m away NA
@@ -61,9 +61,10 @@ nn.df <- data.frame(nn.mat)
 eggs_long <- complete(eggs2, Year=2000:2020,
                       fill = list(Avg.RASY.Count = NA))
 
-
+# recast data from long to wide format
 egg_wide2 <- dcast(eggs_long, Pond.ID ~ Year, value.var="Avg.RASY.Count", mean, na.rm = TRUE)
 
+# some clean up
 egg_wide2[egg_wide2 =="NaN"] <- "NA"
 egg_wide3 <- egg_wide2 %>% mutate_if(is.character,as.numeric)
 
@@ -239,5 +240,9 @@ wDDfinal$Year <- numextract(wDDfinal$wYear)
 nn_final$Year <- numextract(nn_final$wYear)
 
 # save data
+
+# weighted density dependence
 write.csv(x = wDDfinal, file="wDDdata.csv")
+
+# nearest neighbor
 write.csv(nn_final, "nn_final.csv")

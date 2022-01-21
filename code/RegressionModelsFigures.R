@@ -1,7 +1,6 @@
 # load data
-alldata2 <- read.csv("alldataUSE.csv", header = TRUE)
+alldata2 <- read.csv("woodfrogdata.csv", header = TRUE)
 summary(alldata2)
-alldata2$reli <- as.factor(alldata2$reli)
 
 # libraries
 library(rstanarm)
@@ -35,10 +34,10 @@ for (i in 3:dim(alldata2)[1]) {
 # egg mass count models ----
 
 # set priors
-my_priors <- normal(location = [0, 0], scale = [2.5, 2.5])
+my_priors <- normal(location = (0, 0), scale = (2.5, 2.5))
 
 # normal model
-w_eggs_Cmod <- stan_glm(Avg.RASY.Count ~ wEggst2 + (wEggst2|Pond.ID),
+w_eggs_Cmod <- stan_glmer(Avg.RASY.Count ~ wEggst2 + (wEggst2|Pond.ID),
                        iter = 10000,
                        na.action = "na.omit",
                        data = alldata2,
