@@ -8,15 +8,17 @@
 - Mark C. Urban<sup>2</sup>
 - Jonathan L Richardson<sup>3</sup>
 - A.Z. Andis Arietta<sup>1</sup>
-- Susan B. Rodrigues<sup>1</sup>
+- Susan B. Rodrigues<sup>4</sup>
 - Adriana D. Rubinstein<sup>1</sup>
-- Michael F. Benard<sup>4</sup>
-- David K. Skelly<sup>1,5</sup>
+- Michael F. Benard<sup>5</sup>
+- David K. Skelly<sup>1,4</sup>
 
 <sup>1</sup>School of the Environment, Yale University, 370 Prospect St., New Haven, CT 06511 USA
 <sup>2</sup>Department of Ecology and Evolutionary Biology and Center of Biological Risk, University of Connecticut, Storrs, CT 06269 USA
 <sup>3</sup>Department of Biology, University of Richmond, VA 23173 USA
-
+<sup>4</sup>Yale Peabody Museum of Natural History, Yale University, New Haven, CT 06511 USA
+<sup>5</sup>Department of Biology, Case Western Reserve University, 10900 Euclid Ave., Cleveland, OH 44106 USA
+<sup>6</sup>Corresponding author: frowland@usgs.gov
 
 
 ## Code
