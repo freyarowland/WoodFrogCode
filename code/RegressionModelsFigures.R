@@ -1,3 +1,7 @@
+# Code for partial pooling Bayesian models
+# written by F.E. Rowland
+# Last edit January 2022
+
 # load data
 alldata2 <- read.csv("woodfrogdata.csv", header = TRUE)
 summary(alldata2)
