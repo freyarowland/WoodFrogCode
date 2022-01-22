@@ -201,12 +201,10 @@ head(dd_final)
 
 
 
-# extract year
+# extract year and end with final neighborhood density dependence
 numextract <- function(string){
   str_extract(string, "\\-*\\d+\\.*\\d*")
 }
 dd_final$Year <- numextract(dd_final$wYear)
 
-# save data
-# weighted density dependence
-write.csv(x = dd_final, file="wDDdata.csv")
+

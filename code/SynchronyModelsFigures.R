@@ -14,6 +14,9 @@ library(ggpubr)
 library(lmap)
 
 # get distance matrix between ponds ----
+# Note: pond coordinates are not shared due to sensitive species
+# this code is for showing how to create distance matrix
+# distance matrix is provided as "distance.mat.csv"
 ponds2$name <- ponds2$Pond.ID
 coords <- ponds2[ , c(1, 5:6)] # subset Pond.ID, lat, lon
 
@@ -117,11 +120,7 @@ correlog.plot <- ggplot(aes(x = x, y = y), data = newdata) +
 # spatial plot
 spatial.plot(x, y, z, ctr = TRUE)
 
-
 # Calculate Moran's I ----
-
-# make sure names match up for calcu
-# eggs3$Pond.ID[!(eggs3$Pond.ID %in% inv.dist$name)]
 
 # calculate distances other ways
 pond.dist <- as.matrix(dist(cbind(ponds2$lon, ponds2$lat)))
@@ -240,9 +239,9 @@ fig2 <- ggarrange(labels = c("a", "b"),
                            ncol = 1
                            )
 
-ggsave(fig2,
-       filename = "Fig2_v2.pdf",
-       device = "pdf",
-       width = 4,
-       height = 6,
-       dpi = 600)
+# ggsave(fig2,
+#        filename = "Fig2_v2.pdf",
+#        device = "pdf",
+#        width = 4,
+#        height = 6,
+#        dpi = 600)
