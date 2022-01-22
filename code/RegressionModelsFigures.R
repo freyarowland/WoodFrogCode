@@ -29,6 +29,7 @@ library(lattice)
 library(extrafont)
 library(modelr)
 library(parallel)
+library(ggpubr)
 
 # Pond.ID as factor
 alldata2$Pond.ID <- as.factor(alldata2$Pond.ID)
@@ -101,7 +102,7 @@ wEggs_Counts <- alldata3 %>%
 # growth rate vs. weighted eggs ----
 
 # partial pooling model
-wEggs_Gmod <- stan_glmer(growthrate2 ~ wEggs_t2 + (wEggs_t2|Pond.ID),
+wEggs_Gmod <- stan_glmer(GrowthRate ~ wEggs_t2 + (wEggs_t2|Pond.ID),
                          iter = 10000,
                          na.action = "na.omit",
                          data = alldata2,
@@ -134,7 +135,7 @@ round(ci50, 6)
 
 # overall plot
 wEggs_Growth <- alldata3 %>%
-  ggplot(aes(x = wEggs_t2, y = growthrate2), alldata3) +
+  ggplot(aes(x = wEggs_t2, y = GrowthRate), alldata3) +
   geom_point(pch = 21, fill = "grey80", alpha = 0.5) +
   geom_abline(aes(intercept = Intercept, slope = Slope), data = alldata3, color = "grey80", lwd = 0.5) +
   geom_abline(intercept = 0.02458, slope = -0.00019, col = "black", lwd = 1) +
@@ -194,7 +195,7 @@ PDSI_Counts <- alldata3 %>%
 # growth rate vs. avg PDSI ----
 
 # fit model
-PDSI_Gmod <- stan_glmer(growthrate2 ~ spfaPDSI + (spfaPDSI|Pond.ID),
+PDSI_Gmod <- stan_glmer(GrowthRate ~ spfaPDSI + (spfaPDSI|Pond.ID),
                         iter = 10000,
                         na.action = "na.omit",
                         data = alldata2,
@@ -225,7 +226,7 @@ round(ci95, 4)
 
 # overall plot
 PDSI_Growth <- alldata3 %>%
-  ggplot(aes(x = spfaPDSI, y = growthrate2), alldata3) +
+  ggplot(aes(x = spfaPDSI, y = GrowthRate), alldata3) +
   geom_point(pch = 21, fill = "grey80", alpha = 0.5) +
   geom_abline(aes(intercept = Intercept, slope = Slope), data = alldata3, color = "grey80", lwd = 0.5) +
   geom_abline(intercept = -0.00241, slope = 0.01595, col = "black", lwd = 1) +
@@ -282,7 +283,7 @@ thaw_Counts <- alldata3 %>%
 # growth rate vs. winter thaw ----
 
 # fit model
-thaw_Gmod <- stan_glmer(growthrate2 ~ days_thawed.y + (days_thawed.y|Pond.ID),
+thaw_Gmod <- stan_glmer(GrowthRate ~ days_thawed.y + (days_thawed.y|Pond.ID),
                         iter = 10000,
                         na.action = "na.omit",
                         data = alldata2,
@@ -315,7 +316,7 @@ alldata3 <- left_join(alldata2, coefs, by="Pond.ID")
 
 # verall plot
 thaw_Growth <- alldata3 %>%
-  ggplot(aes(x = days_thawed.y, y = growthrate2), alldata3) +
+  ggplot(aes(x = days_thawed.y, y = GrowthRate), alldata3) +
   geom_point(pch = 21, fill = "grey80", alpha = 0.5) +
   geom_abline(aes(intercept = Intercept, slope = Slope), data = alldata3, color = "grey80", lwd = 0.5, alpha = 0.5) +
   geom_abline(intercept = 0.26996, slope = -0.00177, col = "black", lwd = 1) +
@@ -375,7 +376,7 @@ PDSIlag_Counts <- alldata3 %>%
 # growth rate vs. PDSI lag ----
 
 # fit model
-PDSIlag_Gmod <- stan_glmer(growthrate2 ~ spfaPDSIlag + (spfaPDSIlag|Pond.ID),
+PDSIlag_Gmod <- stan_glmer(GrowthRate ~ spfaPDSIlag + (spfaPDSIlag|Pond.ID),
                            iter = 10000,
                            na.action = "na.omit",
                            data = alldata2,
@@ -408,7 +409,7 @@ alldata3 <- left_join(alldata2, coefs, by="Pond.ID")
 
 # overall plot
 PDSIlag_Growth <- alldata3 %>%
-  ggplot(aes(x = spfaPDSIlag, y = growthrate2), alldata3) +
+  ggplot(aes(x = spfaPDSIlag, y = GrowthRate), alldata3) +
   geom_point(pch = 21, fill = "grey80", alpha = 0.5) +
   geom_abline(aes(intercept = Intercept, slope = Slope), data = alldata3, color = "grey80", lwd = 0.5, alpha = 0.5) +
   geom_abline(intercept = -0.00500, slope = -0.00526, col = "black", lwd = 1) +
@@ -469,7 +470,7 @@ Dens_Counts <- alldata3 %>%
 # growth rate vs. competition ----
 
 # fit model
-Dens_Gmod <- stan_glmer(growthrate2 ~ RASYdens_t2 + (RASYdens_t2|Pond.ID),
+Dens_Gmod <- stan_glmer(GrowthRate ~ RASYdens_t2 + (RASYdens_t2|Pond.ID),
                         iter = 10000,
                         na.action = "na.omit",
                         data = alldata2,
@@ -502,7 +503,7 @@ alldata3 <- left_join(alldata2, coefs, by="Pond.ID")
 
 # overall plot
 Dens_Growth <- alldata3 %>%
-  ggplot(aes(x = RASYdens_t2, y = growthrate2), alldata3) +
+  ggplot(aes(x = RASYdens_t2, y = GrowthRate), alldata3) +
   geom_point(pch = 21, fill = "grey80", alpha = 0.5) +
   geom_abline(aes(intercept = Intercept, slope = Slope), data = alldata3, color = "grey80", lwd = 0.5, alpha = 0.5) +
   geom_abline(intercept = 0.25682, slope = -5.71335, col = "black", lwd = 1) +
@@ -561,7 +562,7 @@ Depth_Counts <- alldata3 %>%
 # growth rate vs. depth ----
 
 # fit model
-Depth_Gmod <- stan_glmer(growthrate2 ~ Depth + (Depth|Pond.ID),
+Depth_Gmod <- stan_glmer(GrowthRate ~ Depth + (Depth|Pond.ID),
                          iter = 10000,
                          na.action = "na.omit",
                          data = alldata2,
@@ -594,7 +595,7 @@ alldata3 <- left_join(alldata2, coefs, by="Pond.ID")
 
 # overall plot
 Depth_Growth <- alldata3 %>%
-  ggplot(aes(x = Depth, y = growthrate2), alldata3) +
+  ggplot(aes(x = Depth, y = GrowthRate), alldata3) +
   geom_point(pch = 21, fill = "grey80", alpha = 0.5) +
   geom_abline(aes(intercept = Intercept, slope = Slope), data = alldata3, color = "grey80", lwd = 0.5, alpha = 0.5) +
   geom_abline(intercept = -0.03124, slope = 0.00057, col = "black", lwd = 1) +
@@ -654,7 +655,7 @@ Canopy_Counts <- alldata3 %>%
 # growth rate vs. depth ----
 
 # fit model
-Canopy_Gmod <- stan_glmer(growthrate2 ~ canopy + (canopy|Pond.ID),
+Canopy_Gmod <- stan_glmer(GrowthRate ~ canopy + (canopy|Pond.ID),
                           iter = 10000,
                           na.action = "na.omit",
                           data = alldata2,
@@ -687,7 +688,7 @@ alldata3 <- left_join(alldata2, coefs, by="Pond.ID")
 
 # overall plot
 Canopy_Growth <- alldata3 %>%
-  ggplot(aes(x = canopy, y = growthrate2), alldata3) +
+  ggplot(aes(x = canopy, y = GrowthRate), alldata3) +
   geom_point(pch = 21, fill = "grey80", alpha = 0.5) +
   geom_abline(aes(intercept = Intercept, slope = Slope), data = alldata3, color = "grey80", lwd = 0.5, alpha = 0.5) +
   geom_abline(intercept = -0.03124, slope = 0.00057, col = "black", lwd = 1) +
@@ -698,7 +699,6 @@ Canopy_Growth <- alldata3 %>%
 
 
 ## multipanel egg count figure ----
-library("ggpubr")
 
 allcounts <- ggarrange(
   wEggs_Counts,
