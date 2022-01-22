@@ -30,7 +30,7 @@ There are four scripts associated with this manuscript all linked to [WoodFrogCo
 3) [SynchronyModelsFigures.R](<code/SynchronyModelsFigures.R>) shows the calculations for spatial synchrony within years and across years.
 4) [YMFmap.R](<code/YMFmap.R>) is the code for making the map figure.
 
-All scripts have been archived via Zenodo DOI 
+All scripts have been archived via Zenodo [![DOI](https://zenodo.org/badge/428043274.svg)](https://zenodo.org/badge/latestdoi/428043274)
 
 ## Data
 
