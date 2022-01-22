@@ -30,6 +30,8 @@ There are four scripts associated with this manuscript all linked to [WoodFrogCo
 3) [SynchronyModelsFigures.R](<code/SynchronyModelsFigures.R>) shows the calculations for spatial synchrony within years and across years.
 4) [YMFmap.R](<code/YMFmap.R>) is the code for making the map figure.
 
+All scripts have been archived via Zenodo DOI 
+
 ## Data
 
 The data are published on Dryad (*link forthcoming*) once the manuscript has a DOI to link. Note: no pond coordinates are included in the released data to keep populations safe from intrusion. 
