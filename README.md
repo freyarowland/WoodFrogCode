@@ -34,4 +34,4 @@ All scripts have been archived via Zenodo [![DOI](https://zenodo.org/badge/42804
 
 ## Data
 
-The data are published on Dryad (*link forthcoming*) once the manuscript has a DOI to link. Note: no pond coordinates are included in the released data to keep populations safe from intrusion. 
+The data are published on Dryad [doi:10.5061/dryad.0cfxpnw3r](doi:10.5061/dryad.0cfxpnw3r). Note: no pond coordinates are included in the released data to keep populations safe from intrusion. 
