@@ -2,7 +2,7 @@
 ## Published in Ecology 2022
 
 ## Authors
-- Freya E. Rowland<sup>1,6</sup>
+- Freya E. Rowland<sup>1,6</sup>*
 - Elizabeth Schyling<sup>1</sup>
 - L. Kealoha Freidenburg<sup>1</sup>
 - Mark C. Urban<sup>2</sup>
@@ -20,6 +20,7 @@
 <sup>5</sup>Department of Biology, Case Western Reserve University, 10900 Euclid Ave., Cleveland, OH 44106 USA
 <sup>6</sup>Corresponding author: frowland@usgs.gov
 
+*Current address Columbia Environmental Research Center, US Geological Survey, Columbia MO 65201 USA
 
 ## Code
 
@@ -29,6 +30,7 @@ There are four scripts associated with this manuscript all linked to [WoodFrogCo
 2) [RegressionModelsFigures.R](<code/RegressionModelsFigures.R>) shows the Bayesian hierarchical code using rstanarm to allow slope and intercept to vary by pond.
 3) [SynchronyModelsFigures.R](<code/SynchronyModelsFigures.R>) shows the calculations for spatial synchrony within years and across years.
 4) [YMFmap.R](<code/YMFmap.R>) is the code for making the map figure.
+5) [BayesianVariableSelection.R](<code/BayesianVariableSelection.R>) is the script for Bayesian variable selection of variables and models.
 
 All scripts have been archived via Zenodo [![DOI](https://zenodo.org/badge/428043274.svg)](https://zenodo.org/badge/latestdoi/428043274)
 
