@@ -32,7 +32,7 @@ There are five scripts associated with this manuscript all linked to [WoodFrogCo
 4) [YMFmap.R](<code/YMFmap.R>) is the code for making the map figure.
 5) [BayesianVariableSelection.R](<code/BayesianVariableSelection.R>) is the script for Bayesian variable selection of variables and models.
 
-All scripts have been archived via Zenodo [![DOI](https://zenodo.org/badge/428043274.svg)](https://zenodo.org/badge/latestdoi/428043274)
+All scripts have been archived via Zenodo [![DOI](https://zenodo.org/badge/5903388.svg)](https://zenodo.org/badge/latestdoi/5903388)
 
 ## Data
 
