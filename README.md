@@ -1,4 +1,4 @@
-# Code from manuscript "Asychrony, density dependence, and persistence in an amphibian" (Manuscript ID ECY21-0446)
+# Code from "Asychrony, density dependence, and persistence in an amphibian" (Manuscript ID ECY21-0446)
 ## Published in Ecology 2022
 
 ## Authors
@@ -24,7 +24,7 @@
 
 ## Code
 
-There are four scripts associated with this manuscript all linked to [WoodFrogCode.Rproj](code/WoodFrogCode.Rproj):
+There are five scripts associated with this manuscript all linked to [WoodFrogCode.Rproj](code/WoodFrogCode.Rproj):
 
 1) [NeighborhoodCompCode.R](<code/NeighborhoodCompCode.R>) shows how we computed the weighted effect of competition from neighboring ponds.
 2) [RegressionModelsFigures.R](<code/RegressionModelsFigures.R>) shows the Bayesian hierarchical code using rstanarm to allow slope and intercept to vary by pond.
