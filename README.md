@@ -1,5 +1,6 @@
-# Code from "Asychrony, density dependence, and persistence in an amphibian" (Manuscript ID ECY21-0446)
+# Code from "Asychrony, density dependence, and persistence in an amphibian"
 ## Published in Ecology 2022
+## Link: (https://doi.org/10.1002/ecy.3696)
 
 ## Authors
 - Freya E. Rowland<sup>1,6</sup>*
